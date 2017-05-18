@@ -1,14 +1,13 @@
 //
-//  SlideshowList.swift
+//  AlbumsController.swift
 //  FaceR
 //
-//  Created by Jordan Fraughton on 5/1/17.
+//  Created by Jordan Fraughton on 5/17/17.
 //  Copyright © 2017 Jordan Fraughton. All rights reserved.
 //
 
 import Foundation
 
-
-class SlideshowList {
+class AlbumsController {
     
 }
