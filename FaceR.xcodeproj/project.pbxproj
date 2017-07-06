@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		172015351EE8B11D00CD07D6 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172015341EE8B11D00CD07D6 /* AlbumCollectionViewCell.swift */; };
 		17479FE71EF3368300438452 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17479FE61EF3368300438452 /* Album.swift */; };
 		175B1A0D1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */; };
+		179F2B2D1EF872F100E76801 /* StartSlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */; };
 		17D15FF21E9FD4CF003CD822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D15FF11E9FD4CF003CD822 /* AppDelegate.swift */; };
 		17D15FF71E9FD4CF003CD822 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D15FF51E9FD4CF003CD822 /* Main.storyboard */; };
 		17D15FF91E9FD4CF003CD822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D15FF81E9FD4CF003CD822 /* Assets.xcassets */; };
@@ -17,9 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		172015341EE8B11D00CD07D6 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		17479FE61EF3368300438452 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumsCollectionViewController.swift; sourceTree = "<group>"; };
+		179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSlideshowViewController.swift; sourceTree = "<group>"; };
 		17D15FEE1E9FD4CF003CD822 /* FaceR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D15FF11E9FD4CF003CD822 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D15FF61E9FD4CF003CD822 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,10 +39,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		179F2B2B1EF8712700E76801 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				17D15FF81E9FD4CF003CD822 /* Assets.xcassets */,
+				17D15FF51E9FD4CF003CD822 /* Main.storyboard */,
+				17D15FFA1E9FD4CF003CD822 /* LaunchScreen.storyboard */,
+				17D15FFD1E9FD4D0003CD822 /* Info.plist */,
+				17D15FF11E9FD4CF003CD822 /* AppDelegate.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		17BCDABD1EB7DF1C00A64A24 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */,
+				179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -74,14 +87,9 @@
 		17D15FF01E9FD4CF003CD822 /* FaceR */ = {
 			isa = PBXGroup;
 			children = (
-				17D15FF51E9FD4CF003CD822 /* Main.storyboard */,
-				172015341EE8B11D00CD07D6 /* AlbumCollectionViewCell.swift */,
 				17BCDABD1EB7DF1C00A64A24 /* ViewControllers */,
 				17BCDACA1EB7DFF800A64A24 /* Model */,
-				17D15FF81E9FD4CF003CD822 /* Assets.xcassets */,
-				17D15FFA1E9FD4CF003CD822 /* LaunchScreen.storyboard */,
-				17D15FFD1E9FD4D0003CD822 /* Info.plist */,
-				17D15FF11E9FD4CF003CD822 /* AppDelegate.swift */,
+				179F2B2B1EF8712700E76801 /* Resources */,
 			);
 			path = FaceR;
 			sourceTree = "<group>";
@@ -159,10 +167,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				172015351EE8B11D00CD07D6 /* AlbumCollectionViewCell.swift in Sources */,
 				17D15FF21E9FD4CF003CD822 /* AppDelegate.swift in Sources */,
 				175B1A0D1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift in Sources */,
 				17479FE71EF3368300438452 /* Album.swift in Sources */,
+				179F2B2D1EF872F100E76801 /* StartSlideshowViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EWUXMHAPLR;
 				INFOPLIST_FILE = FaceR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanfraughton.FaceR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -303,6 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EWUXMHAPLR;
 				INFOPLIST_FILE = FaceR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanfraughton.FaceR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
