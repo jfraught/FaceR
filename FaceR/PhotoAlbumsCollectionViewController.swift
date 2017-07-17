@@ -12,11 +12,13 @@ import Photos
 class PhotosAlbumsCollectionViewController: UICollectionViewController {
     
     // MARK: - Propeties 
-    let album = Album()
+    let album = Album.shared
+    var collectionCell: UICollectionViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         album.fetchFirstImageFromUserCollections()
+        collectionView?.reloadData()
     }
     
     
@@ -36,4 +38,18 @@ class PhotosAlbumsCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: - Navigation 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toStartSlideshow" {
+            
+            if let slideshowViewController = segue.destination as? StartSlideshowViewController, let selectedCollection = collectionView?.indexPathsForSelectedItems {
+                
+                let index = selectedCollection
+                slideshowViewController.index = index[0].row
+                print(index)
+            }
+        }
+    }
 }

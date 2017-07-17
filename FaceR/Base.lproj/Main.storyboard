@@ -61,7 +61,7 @@
                                     <constraint firstItem="clp-CK-ZOi" firstAttribute="leading" secondItem="Lyj-Rb-a3J" secondAttribute="leadingMargin" constant="-8" id="hQM-4s-ySa"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Dd4-wR-dzX" kind="show" id="2gl-S6-rV6"/>
+                                    <segue destination="Dd4-wR-dzX" kind="show" identifier="toStartSlideshow" id="2gl-S6-rV6"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="1741.40625" y="107.8125"/>
         </scene>
-        <!--View Controller-->
+        <!--Start Slideshow View Controller-->
         <scene sceneID="hmh-ke-r70">
             <objects>
-                <viewController id="Dd4-wR-dzX" sceneMemberID="viewController">
+                <viewController id="Dd4-wR-dzX" customClass="StartSlideshowViewController" customModule="FaceR" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w8x-30-WAh"/>
                         <viewControllerLayoutGuide type="bottom" id="6lx-Ca-Ntu"/>
@@ -90,20 +90,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V15-Kz-5tQ">
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V15-Kz-5tQ">
                                 <rect key="frame" x="190" y="148" width="388" height="346"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="346" id="CP5-Eu-5SF"/>
+                                    <constraint firstAttribute="width" constant="388" id="a8k-eC-3fv"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg3-jE-877">
-                                <rect key="frame" x="363" y="502" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg3-jE-877">
+                                <rect key="frame" x="363" y="502" width="42" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Rpu-aI-3fr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Slide Left To Begin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nud-qr-E7t">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slide Left To Begin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nud-qr-E7t">
                                 <rect key="frame" x="313" y="711" width="143" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="TbI-oq-AGL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -111,10 +118,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="gg3-jE-877" firstAttribute="centerX" secondItem="V15-Kz-5tQ" secondAttribute="centerX" id="18L-9v-GTj"/>
+                            <constraint firstItem="V15-Kz-5tQ" firstAttribute="top" secondItem="w8x-30-WAh" secondAttribute="bottom" constant="84" id="G9g-EB-dY7"/>
+                            <constraint firstItem="gg3-jE-877" firstAttribute="top" secondItem="V15-Kz-5tQ" secondAttribute="bottom" constant="8" id="LRI-Vp-mpb"/>
+                            <constraint firstItem="6lx-Ca-Ntu" firstAttribute="top" secondItem="Nud-qr-E7t" secondAttribute="bottom" constant="287" id="UTF-qD-5M3"/>
+                            <constraint firstItem="gg3-jE-877" firstAttribute="centerX" secondItem="Nud-qr-E7t" secondAttribute="centerX" id="kER-c2-qOF"/>
+                            <constraint firstItem="V15-Kz-5tQ" firstAttribute="centerX" secondItem="XRh-qO-lFa" secondAttribute="centerX" id="tCK-BN-CKu"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="JFd-e3-lI4" appends="YES" id="OZC-5g-Aqm"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="slideshowNameLabel" destination="gg3-jE-877" id="fVX-IJ-tLg"/>
+                        <outlet property="startSlideshowImage" destination="V15-Kz-5tQ" id="okL-sv-3jL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGs-xc-oRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="JFd-e3-lI4">
@@ -123,7 +142,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2452" y="108"/>
+            <point key="canvasLocation" x="2458.59375" y="107.8125"/>
         </scene>
         <!--Start Slideshow View Controller-->
         <scene sceneID="GcF-pf-l9W">
@@ -155,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7o-Q9-XPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3169" y="108"/>
+            <point key="canvasLocation" x="3195" y="108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4aA-53-Xeh">

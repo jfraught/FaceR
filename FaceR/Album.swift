@@ -10,11 +10,14 @@ import Foundation
 import Photos
 
 class Album {
-    
+    static let shared = Album()
+   
     var firstImageArray: [UIImage] = []
     var albumNameArrary: [String] = []
     let imgManager = PHImageManager.default()
     let fetchOptions = PHFetchOptions()
+    
+    
     
     func fetchFirstImageFromUserCollections() {
         
@@ -47,7 +50,6 @@ class Album {
                         
                         if let firstImage = image {
                             self.firstImageArray.append(firstImage)
-                            print(self.firstImageArray.count)
                         }
                 })
                 
