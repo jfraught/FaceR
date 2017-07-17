@@ -17,7 +17,7 @@ class PhotosAlbumsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        album.fetchFirstImageFromUserCollections()
+        album.fetchFirstImage()
         collectionView?.reloadData()
     }
     
@@ -48,7 +48,6 @@ class PhotosAlbumsCollectionViewController: UICollectionViewController {
                 
                 let index = selectedCollection
                 slideshowViewController.index = index[0].row
-                print(index)
             }
         }
     }

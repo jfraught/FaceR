@@ -27,13 +27,8 @@ class StartSlideshowViewController: UIViewController {
 
     private func updateViews() {
         guard let index = index else { return }
-        print("Number of images: \(Album.shared.firstImageArray.count)")
-        print("Index: \(index)")
         slideshowNameLabel.text = Album.shared.albumNameArrary[index]
         let image = Album.shared.firstImageArray[index]
-        if image != nil {
-            print("Image is not nil")
-        }
        startSlideshowImage.image = image 
     }
     

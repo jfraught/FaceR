@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVh-Dh-7lY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVh-Dh-7lY">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -127,7 +127,7 @@
                             <constraint firstItem="V15-Kz-5tQ" firstAttribute="centerX" secondItem="XRh-qO-lFa" secondAttribute="centerX" id="tCK-BN-CKu"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="JFd-e3-lI4" appends="YES" id="OZC-5g-Aqm"/>
+                            <outletCollection property="gestureRecognizers" destination="p8d-xX-3UR" appends="YES" id="H8j-TJ-DGB"/>
                         </connections>
                     </view>
                     <connections>
@@ -136,45 +136,45 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGs-xc-oRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="JFd-e3-lI4">
+                <swipeGestureRecognizer direction="left" id="p8d-xX-3UR">
                     <connections>
-                        <segue destination="ian-Xf-QD5" kind="show" id="dG2-pz-SHQ"/>
+                        <segue destination="0eo-Yq-71D" kind="show" id="ZXm-rJ-vLn"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2458.59375" y="107.8125"/>
         </scene>
-        <!--Start Slideshow View Controller-->
-        <scene sceneID="GcF-pf-l9W">
+        <!--Slideshow View Controller-->
+        <scene sceneID="53F-Sd-mkd">
             <objects>
-                <viewController id="ian-Xf-QD5" customClass="StartSlideshowViewController" customModule="FaceR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0eo-Yq-71D" customClass="SlideshowViewController" customModule="FaceR" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ht8-5l-GkF"/>
-                        <viewControllerLayoutGuide type="bottom" id="voN-Mg-MCB"/>
+                        <viewControllerLayoutGuide type="top" id="fbw-dr-5hm"/>
+                        <viewControllerLayoutGuide type="bottom" id="hdy-ki-kJu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yHl-fL-kcx">
+                    <view key="view" contentMode="scaleToFill" id="x5u-JL-woV">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WZd-jN-xKz">
-                                <rect key="frame" x="20" y="20" width="728" height="1004"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-kf-k96">
+                                <rect key="frame" x="20" y="20" width="728" height="984"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WZd-jN-xKz" firstAttribute="leading" secondItem="yHl-fL-kcx" secondAttribute="leadingMargin" id="Ie7-g1-ILi"/>
-                            <constraint firstItem="WZd-jN-xKz" firstAttribute="top" secondItem="Ht8-5l-GkF" secondAttribute="bottom" id="avb-cP-Ja3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WZd-jN-xKz" secondAttribute="trailing" id="eTH-sS-cQa"/>
-                            <constraint firstItem="voN-Mg-MCB" firstAttribute="top" secondItem="WZd-jN-xKz" secondAttribute="bottom" id="xm1-IB-gbg"/>
+                            <constraint firstItem="U1I-kf-k96" firstAttribute="leading" secondItem="x5u-JL-woV" secondAttribute="leadingMargin" id="Dte-oB-d0T"/>
+                            <constraint firstItem="hdy-ki-kJu" firstAttribute="top" secondItem="U1I-kf-k96" secondAttribute="bottom" constant="20" id="EzQ-9N-uhy"/>
+                            <constraint firstItem="U1I-kf-k96" firstAttribute="trailing" secondItem="x5u-JL-woV" secondAttribute="trailingMargin" id="cQt-Lf-fmX"/>
+                            <constraint firstItem="U1I-kf-k96" firstAttribute="top" secondItem="fbw-dr-5hm" secondAttribute="bottom" id="tTw-rj-iFc"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="slideshowStartImageView" destination="WZd-jN-xKz" id="Ky9-To-6ZB"/>
+                        <outlet property="SlideshowImageView" destination="U1I-kf-k96" id="JPc-2n-4XX"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i7o-Q9-XPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRu-bQ-YUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3195" y="108"/>
+            <point key="canvasLocation" x="3171" y="108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4aA-53-Xeh">

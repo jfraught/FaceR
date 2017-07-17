@@ -14,6 +14,7 @@
 		17D15FF71E9FD4CF003CD822 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D15FF51E9FD4CF003CD822 /* Main.storyboard */; };
 		17D15FF91E9FD4CF003CD822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D15FF81E9FD4CF003CD822 /* Assets.xcassets */; };
 		17D15FFC1E9FD4CF003CD822 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D15FFA1E9FD4CF003CD822 /* LaunchScreen.storyboard */; };
+		17F3884F1F1D2334002C1ABC /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F3884E1F1D2334002C1ABC /* SlideshowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		17D15FF81E9FD4CF003CD822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D15FFB1E9FD4CF003CD822 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D15FFD1E9FD4D0003CD822 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17F3884E1F1D2334002C1ABC /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */,
 				179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */,
+				17F3884E1F1D2334002C1ABC /* SlideshowViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				17D15FF21E9FD4CF003CD822 /* AppDelegate.swift in Sources */,
 				175B1A0D1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift in Sources */,
 				17479FE71EF3368300438452 /* Album.swift in Sources */,
+				17F3884F1F1D2334002C1ABC /* SlideshowViewController.swift in Sources */,
 				179F2B2D1EF872F100E76801 /* StartSlideshowViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

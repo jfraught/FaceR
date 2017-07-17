@@ -10,21 +10,25 @@ import Foundation
 import Photos
 
 class Album {
-    static let shared = Album()
+    
+    
+    init() {
+        let fetchedUserCollections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: PHFetchOptions())
+        
+        self.userCollections = fetchedUserCollections
+    }
+    
+    // MARK: - Actions
+    
    
-    var firstImageArray: [UIImage] = []
-    var albumNameArrary: [String] = []
-    let imgManager = PHImageManager.default()
-    let fetchOptions = PHFetchOptions()
-    
-    
-    
-    func fetchFirstImageFromUserCollections() {
         
-        // Get user collections
         
-        let userCollections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: PHFetchOptions())
-        print(userCollections.count)
+       
+        
+    
+    
+    func fetchFirstImage() {
+
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = true
         requestOptions.deliveryMode = .highQualityFormat
@@ -56,5 +60,24 @@ class Album {
             }
         }
     }
-
+    
+    func fetchFullAlbum() {
+        
+        // Fetch required album
+        
+    }
+    
+    
+    
+    
+    // MARK: - Properties
+    
+    static let shared = Album()
+    
+    let userCollections: PHFetchResult<PHAssetCollection>
+    var firstImageArray: [UIImage] = []
+    var albumNameArrary: [String] = []
+    let imgManager = PHImageManager.default()
+    let fetchOptions = PHFetchOptions()
+    
 }
