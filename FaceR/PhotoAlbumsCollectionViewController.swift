@@ -11,16 +11,13 @@ import Photos
 
 class PhotosAlbumsCollectionViewController: UICollectionViewController {
     
-    // MARK: - Propeties 
-    let album = Album.shared
-    var collectionCell: UICollectionViewCell?
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         album.fetchFirstImage()
         collectionView?.reloadData()
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return album.firstImageArray.count
@@ -48,7 +45,13 @@ class PhotosAlbumsCollectionViewController: UICollectionViewController {
                 
                 let index = selectedCollection
                 slideshowViewController.index = index[0].row
+                album.index = index[0].row 
             }
         }
     }
+    
+    // MARK: - Propeties
+    
+    let album = Album.shared
+    var collectionCell: UICollectionViewCell?
 }

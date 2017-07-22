@@ -19,6 +19,7 @@ class StartSlideshowViewController: UIViewController {
             if isViewLoaded { updateViews() }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()

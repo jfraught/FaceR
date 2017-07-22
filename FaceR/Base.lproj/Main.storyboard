@@ -156,11 +156,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-kf-k96">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U1I-kf-k96">
                                 <rect key="frame" x="20" y="20" width="728" height="984"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="02s-pN-bW7" appends="YES" id="91P-n9-cM4"/>
+                                    <outletCollection property="gestureRecognizers" destination="UmR-mU-WaO" appends="YES" id="Knj-QT-MA6"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="U1I-kf-k96" firstAttribute="leading" secondItem="x5u-JL-woV" secondAttribute="leadingMargin" id="Dte-oB-d0T"/>
                             <constraint firstItem="hdy-ki-kJu" firstAttribute="top" secondItem="U1I-kf-k96" secondAttribute="bottom" constant="20" id="EzQ-9N-uhy"/>
@@ -173,6 +179,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRu-bQ-YUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="02s-pN-bW7">
+                    <connections>
+                        <action selector="swipedLeft:" destination="0eo-Yq-71D" id="Idm-vJ-KTS"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="UmR-mU-WaO">
+                    <connections>
+                        <action selector="swipedRight:" destination="0eo-Yq-71D" id="jfE-a1-8aw"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3171" y="108"/>
         </scene>
