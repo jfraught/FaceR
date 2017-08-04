@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170B61991F23C95A002B2D2A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B61981F23C95A002B2D2A /* SettingsViewController.swift */; };
 		17479FE71EF3368300438452 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17479FE61EF3368300438452 /* Album.swift */; };
 		175B1A0D1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */; };
 		179F2B2D1EF872F100E76801 /* StartSlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170B61981F23C95A002B2D2A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		17479FE61EF3368300438452 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumsCollectionViewController.swift; sourceTree = "<group>"; };
 		179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSlideshowViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */,
 				179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */,
 				17F3884E1F1D2334002C1ABC /* SlideshowViewController.swift */,
+				170B61981F23C95A002B2D2A /* SettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				17479FE71EF3368300438452 /* Album.swift in Sources */,
 				17F3884F1F1D2334002C1ABC /* SlideshowViewController.swift in Sources */,
 				179F2B2D1EF872F100E76801 /* StartSlideshowViewController.swift in Sources */,
+				170B61991F23C95A002B2D2A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,12 +303,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EWUXMHAPLR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FaceR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanfraughton.FaceR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -314,12 +321,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EWUXMHAPLR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FaceR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanfraughton.FaceR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
