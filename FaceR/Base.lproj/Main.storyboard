@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVh-Dh-7lY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qVh-Dh-7lY">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <scene sceneID="Cnm-Ol-tYD">
             <objects>
                 <collectionViewController id="HRa-gR-Yc0" customClass="PhotosAlbumsCollectionViewController" customModule="FaceR" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" id="6CJ-cA-uLA">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="6CJ-cA-uLA">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,9 +225,20 @@
             </objects>
             <point key="canvasLocation" x="2410" y="108"/>
         </scene>
-        <!--Slideshow View Controller-->
+        <!--Title-->
         <scene sceneID="53F-Sd-mkd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRu-bQ-YUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="UmR-mU-WaO">
+                    <connections>
+                        <action selector="swipedRight:" destination="0eo-Yq-71D" id="jfE-a1-8aw"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="02s-pN-bW7">
+                    <connections>
+                        <action selector="swipedLeft:" destination="0eo-Yq-71D" id="Idm-vJ-KTS"/>
+                    </connections>
+                </swipeGestureRecognizer>
                 <viewController id="0eo-Yq-71D" customClass="SlideshowViewController" customModule="FaceR" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fbw-dr-5hm"/>
@@ -255,23 +266,13 @@
                             <constraint firstItem="U1I-kf-k96" firstAttribute="top" secondItem="fbw-dr-5hm" secondAttribute="bottom" id="tTw-rj-iFc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="swx-63-CiZ"/>
                     <connections>
                         <outlet property="SlideshowImageView" destination="U1I-kf-k96" id="JPc-2n-4XX"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MRu-bQ-YUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="02s-pN-bW7">
-                    <connections>
-                        <action selector="swipedLeft:" destination="0eo-Yq-71D" id="Idm-vJ-KTS"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="UmR-mU-WaO">
-                    <connections>
-                        <action selector="swipedRight:" destination="0eo-Yq-71D" id="jfE-a1-8aw"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3130" y="108"/>
+            <point key="canvasLocation" x="3165" y="108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4aA-53-Xeh">

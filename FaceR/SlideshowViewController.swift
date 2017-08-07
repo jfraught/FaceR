@@ -36,28 +36,25 @@ class SlideshowViewController: UIViewController {
         
     }
     
-    let album = Album.shared
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
         imageIndex = 0
         updateViews(index: imageIndex)
-        self.SlideshowImageView?.isUserInteractionEnabled = true 
+        self.SlideshowImageView?.isUserInteractionEnabled = true
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        self.navigationController?.navigationBar.isHidden = false 
-    }
-   
     private func updateViews(index: Int) {
         album.fetchFullAlbumWith(index: album.index)
         SlideshowImageView.image = album.fullAlbum[index]
+        navigationItem.title = "Slide \(index + 1) of \(album.fullAlbum.count)"
     }
     
     @IBOutlet weak var SlideshowImageView: UIImageView!
 
     // MARK: - Properties 
     var imageIndex: Int = 0
+    let album = Album.shared
 }
