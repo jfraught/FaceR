@@ -23,10 +23,6 @@ class SettingsTableViewController: UITableViewController {
         secondsStepper.value = Double(Settings.shared.timerCount)
         stepperCountLabel.text = "\(Settings.shared.timerCount)"
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
 
     // MARK: - Table view data source
 
@@ -37,14 +33,11 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 2
     }
     
     // MARK: - Properties
     @IBOutlet weak var secondsStepper: UIStepper!
     @IBOutlet weak var stepperCountLabel: UILabel!
     var stepCount: Int = 0
-    
-    
-
 }

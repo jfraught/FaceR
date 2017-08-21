@@ -23,7 +23,6 @@ class StartSlideshowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        // Do any additional setup after loading the view.
     }
     
     private func updateViews() {
@@ -33,15 +32,11 @@ class StartSlideshowViewController: UIViewController {
        startSlideshowImage.image = image 
     }
     
-
-   
     // MARK: - Navigation
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
         backItem.title = "Cancel"
         navigationItem.backBarButtonItem = backItem
     }
-    
 }

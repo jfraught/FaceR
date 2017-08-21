@@ -11,29 +11,44 @@ import UIKit
 class SlideshowViewController: UIViewController {
     
     // MARK: - Actions 
+
+    func action() {
+        time += 1
+        print("timer is at \(time)")
+    }
     
     @IBAction func swipedLeft(_ sender: UISwipeGestureRecognizer) {
-        print("Swiped left")
-        if imageIndex == album.fullAlbum.count - 1 {
+        if time >= minimumTime {
+            print("Swiped left")
+            if imageIndex == album.fullAlbum.count - 1 {
+                return
+            } else if imageIndex < album.fullAlbum.count {
+                imageIndex += 1
+                print(imageIndex)
+                updateViews(index: imageIndex)
+                time = 0
+            }
+        } else {
             return
-        } else if imageIndex < album.fullAlbum.count {
-            imageIndex += 1
-            print(imageIndex)
-            updateViews(index: imageIndex)
         }
         
     }
+    
     @IBAction func swipedRight(_ sender: UISwipeGestureRecognizer) {
         print("Swiped right")
-        if imageIndex == 0 {
-            print(imageIndex)
+        if time >= minimumTime {
+            if imageIndex == 0 {
+                print(imageIndex)
+                return
+            } else if imageIndex > 0 {
+                print(imageIndex)
+                imageIndex -= 1
+                updateViews(index: imageIndex)
+                time = 0
+            }
+        } else {
             return
-        } else if imageIndex > 0 {
-            print(imageIndex)
-            imageIndex -= 1
-            updateViews(index: imageIndex)
         }
-        
     }
     
     // MARK: - Life cycle
@@ -43,7 +58,12 @@ class SlideshowViewController: UIViewController {
         imageIndex = 0
         updateViews(index: imageIndex)
         self.SlideshowImageView?.isUserInteractionEnabled = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SlideshowViewController.action), userInfo: nil, repeats: true)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
     }
     
     private func updateViews(index: Int) {
@@ -54,7 +74,12 @@ class SlideshowViewController: UIViewController {
     
     @IBOutlet weak var SlideshowImageView: UIImageView!
 
-    // MARK: - Properties 
+    // MARK: - Properties
+    
+    let minimumTime = Settings.shared.timerCount
     var imageIndex: Int = 0
     let album = Album.shared
+    var time = 0
+    var timer = Timer()
+    
 }

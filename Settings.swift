@@ -9,7 +9,22 @@
 import Foundation
 
 class Settings {
-    static let shared = Settings()
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - Properties
+    static let shared = Settings()
     var timerCount: Int = 0
 }
