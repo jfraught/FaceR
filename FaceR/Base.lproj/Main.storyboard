@@ -255,6 +255,7 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="02s-pN-bW7" appends="YES" id="91P-n9-cM4"/>
                                     <outletCollection property="gestureRecognizers" destination="UmR-mU-WaO" appends="YES" id="Knj-QT-MA6"/>
+                                    <outletCollection property="gestureRecognizers" destination="Kms-v2-uxb" appends="YES" id="6vJ-eP-7YN"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -270,21 +271,78 @@
                     <navigationItem key="navigationItem" title="Title" id="swx-63-CiZ"/>
                     <connections>
                         <outlet property="SlideshowImageView" destination="U1I-kf-k96" id="JPc-2n-4XX"/>
+                        <outlet property="nextViewSwipeGesture" destination="Kms-v2-uxb" id="Aqw-gV-QI6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRu-bQ-YUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="UmR-mU-WaO">
+                <swipeGestureRecognizer direction="right" id="UmR-mU-WaO" userLabel="Right Swipe Gesture Recognizer">
                     <connections>
                         <action selector="swipedRight:" destination="0eo-Yq-71D" id="jfE-a1-8aw"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="02s-pN-bW7">
+                <swipeGestureRecognizer direction="left" id="02s-pN-bW7" userLabel="Left Swipe Gesture Recognizer">
                     <connections>
                         <action selector="swipedLeft:" destination="0eo-Yq-71D" id="Idm-vJ-KTS"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="Kms-v2-uxb" userLabel="Next View Swipe Gesture Recognizer">
+                    <connections>
+                        <segue destination="wm9-V7-3Ik" kind="show" id="kN3-zk-X1G"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3090.625" y="107.8125"/>
+        </scene>
+        <!--End Of Slideshow View Controller-->
+        <scene sceneID="rA2-9n-83d">
+            <objects>
+                <viewController id="wm9-V7-3Ik" customClass="EndOfSlideshowViewController" customModule="FaceR" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lEj-tt-kgh"/>
+                        <viewControllerLayoutGuide type="bottom" id="DSC-ni-g70"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1j5-BV-AX4">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This slideshow is finished." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldF-0u-jwU">
+                                <rect key="frame" x="72" y="276" width="625" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="OHr-ov-qOa"/>
+                                    <constraint firstAttribute="width" constant="625" id="dSW-L4-Q0W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs2-3i-cB3">
+                                <rect key="frame" x="324" y="513" width="120" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="3us-w7-VSe"/>
+                                    <constraint firstAttribute="height" constant="60" id="HfO-a3-ym1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitButtonTapped:" destination="wm9-V7-3Ik" eventType="touchUpInside" id="A0D-T0-6z4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rs2-3i-cB3" firstAttribute="top" secondItem="ldF-0u-jwU" secondAttribute="bottom" constant="-3" id="1un-Nz-LZI"/>
+                            <constraint firstItem="rs2-3i-cB3" firstAttribute="centerX" secondItem="1j5-BV-AX4" secondAttribute="centerX" id="Gqe-kE-cV5"/>
+                            <constraint firstItem="ldF-0u-jwU" firstAttribute="centerX" secondItem="1j5-BV-AX4" secondAttribute="centerX" id="Pw8-AW-0Dg"/>
+                            <constraint firstItem="ldF-0u-jwU" firstAttribute="top" secondItem="lEj-tt-kgh" secondAttribute="bottom" constant="256" id="nK8-6v-GCM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P8x-Mc-5As" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3797.65625" y="106.640625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4aA-53-Xeh">

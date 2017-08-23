@@ -10,6 +10,7 @@
 		1726E8951F4630800071269A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726E8941F4630800071269A /* SettingsTableViewController.swift */; };
 		17479FE71EF3368300438452 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17479FE61EF3368300438452 /* Album.swift */; };
 		175B1A0D1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */; };
+		177546821F4D140E00CA176E /* EndOfSlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177546811F4D140E00CA176E /* EndOfSlideshowViewController.swift */; };
 		179F2B2D1EF872F100E76801 /* StartSlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */; };
 		17BDBC7A1F478C7D0047145C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDBC791F478C7D0047145C /* Settings.swift */; };
 		17D15FF21E9FD4CF003CD822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D15FF11E9FD4CF003CD822 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 		1726E8941F4630800071269A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		17479FE61EF3368300438452 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		175B1A0C1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbumsCollectionViewController.swift; sourceTree = "<group>"; };
+		177546811F4D140E00CA176E /* EndOfSlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfSlideshowViewController.swift; sourceTree = "<group>"; };
 		179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSlideshowViewController.swift; sourceTree = "<group>"; };
 		17BDBC791F478C7D0047145C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Settings.swift; sourceTree = "<group>"; };
 		17D15FEE1E9FD4CF003CD822 /* FaceR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				179F2B2C1EF872F100E76801 /* StartSlideshowViewController.swift */,
 				17F3884E1F1D2334002C1ABC /* SlideshowViewController.swift */,
 				1726E8941F4630800071269A /* SettingsTableViewController.swift */,
+				177546811F4D140E00CA176E /* EndOfSlideshowViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				17D15FF21E9FD4CF003CD822 /* AppDelegate.swift in Sources */,
 				175B1A0D1ED0BDB20000F1C8 /* PhotoAlbumsCollectionViewController.swift in Sources */,
+				177546821F4D140E00CA176E /* EndOfSlideshowViewController.swift in Sources */,
 				17479FE71EF3368300438452 /* Album.swift in Sources */,
 				17F3884F1F1D2334002C1ABC /* SlideshowViewController.swift in Sources */,
 				17BDBC7A1F478C7D0047145C /* Settings.swift in Sources */,

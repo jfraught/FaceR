@@ -17,6 +17,8 @@ class SlideshowViewController: UIViewController {
         print("timer is at \(time)")
     }
     
+    // MARK: - Swipe Gestures
+    
     @IBAction func swipedLeft(_ sender: UISwipeGestureRecognizer) {
         if time >= minimumTime {
             print("Swiped left")
@@ -27,6 +29,9 @@ class SlideshowViewController: UIViewController {
                 print(imageIndex)
                 updateViews(index: imageIndex)
                 time = 0
+                if imageIndex == album.fullAlbum.count - 1 {
+                    nextViewSwipeGesture.isEnabled = true
+                }
             }
         } else {
             return
@@ -51,6 +56,7 @@ class SlideshowViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -59,6 +65,7 @@ class SlideshowViewController: UIViewController {
         updateViews(index: imageIndex)
         self.SlideshowImageView?.isUserInteractionEnabled = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SlideshowViewController.action), userInfo: nil, repeats: true)
+        nextViewSwipeGesture.isEnabled = false
         
     }
     
@@ -75,6 +82,8 @@ class SlideshowViewController: UIViewController {
     @IBOutlet weak var SlideshowImageView: UIImageView!
 
     // MARK: - Properties
+    
+    @IBOutlet var nextViewSwipeGesture: UISwipeGestureRecognizer!
     
     let minimumTime = Settings.shared.timerCount
     var imageIndex: Int = 0
