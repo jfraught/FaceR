@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import AVFoundation
+import CoreMedia
 
-class SlideshowViewController: UIViewController {
+class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+
+    // MARK: - Life cycle
     
-    // MARK: - Actions 
-
-    func action() {
-        time += 1
-        print("timer is at \(time)")
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageIndex = 0
+        updateViews(index: imageIndex)
+        self.SlideshowImageView?.isUserInteractionEnabled = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SlideshowViewController.action), userInfo: nil, repeats: true)
+        nextViewSwipeGesture.isEnabled = false
+        
+        // Initialize Camera
+        
+        self.initializeCamera()
+        print("Capture session is running: \(captureSession.isRunning)")
+        
+        // Start Recording 
+        
+        self.startRecording()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+        self.movieFileOutput.stopRecording()
     }
     
     // MARK: - Swipe Gestures
@@ -56,22 +77,7 @@ class SlideshowViewController: UIViewController {
         }
     }
     
-    
-    // MARK: - Life cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageIndex = 0
-        updateViews(index: imageIndex)
-        self.SlideshowImageView?.isUserInteractionEnabled = true
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SlideshowViewController.action), userInfo: nil, repeats: true)
-        nextViewSwipeGesture.isEnabled = false
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        timer.invalidate()
-    }
+    // MARK: Main
     
     private func updateViews(index: Int) {
         album.fetchFullAlbumWith(index: album.index)
@@ -79,10 +85,66 @@ class SlideshowViewController: UIViewController {
         navigationItem.title = "Slide \(index + 1) of \(album.fullAlbum.count)"
     }
     
-    @IBOutlet weak var SlideshowImageView: UIImageView!
-
-    // MARK: - Properties
+    func action() {
+        time += 1
+        print("timer is at \(time)")
+    }
     
+    func initializeCamera() {
+        self.captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        
+        let discovery = AVCaptureDeviceDiscoverySession.init(deviceTypes: [AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .unspecified) as AVCaptureDeviceDiscoverySession
+        
+        for device in discovery.devices as [AVCaptureDevice] {
+            
+            if device.hasMediaType(AVMediaTypeVideo) {
+                if device.position == AVCaptureDevicePosition.front {
+                    self.videoCaptureDevice = device
+                }
+            }
+        }
+        
+        if videoCaptureDevice != nil {
+            
+            do {
+                try self.captureSession.addInput(AVCaptureDeviceInput(device: self.videoCaptureDevice))
+                    
+                if let audioInput = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio) {
+                    try self.captureSession.addInput(AVCaptureDeviceInput(device: audioInput))
+                }
+                
+                self.captureSession.addOutput(self.movieFileOutput)
+                
+                self.captureSession.startRunning()
+                
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    // MARK: Helpers
+    
+    func videoFileLocation() -> String {
+        return NSTemporaryDirectory().appending("videoFile.mov")
+    }
+    
+    func startRecording() {
+        self.movieFileOutput.connection(withMediaType: AVMediaTypeVideo).videoOrientation = .portrait
+        
+        self.movieFileOutput.startRecording(toOutputFileURL: URL(fileURLWithPath: self.videoFileLocation()), recordingDelegate: self)
+    }
+    
+    // MARK: - AVCaptureFileOutputDelegate
+    
+    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+        print("Finishedrecord: \(outputFileURL)")
+    }
+    
+    
+    // MARK: - Properties
+   
+    @IBOutlet weak var SlideshowImageView: UIImageView!
     @IBOutlet var nextViewSwipeGesture: UISwipeGestureRecognizer!
     
     let minimumTime = Settings.shared.timerCount
@@ -91,4 +153,10 @@ class SlideshowViewController: UIViewController {
     var time = 0
     var timer = Timer()
     
+    // Video
+    
+    let captureSession = AVCaptureSession()
+    var videoCaptureDevice: AVCaptureDevice?
+    var movieFileOutput = AVCaptureMovieFileOutput()
+    var outputFileURL: URL?
 }
