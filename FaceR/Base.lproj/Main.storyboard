@@ -287,7 +287,7 @@
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="Kms-v2-uxb" userLabel="Next View Swipe Gesture Recognizer">
                     <connections>
-                        <segue destination="wm9-V7-3Ik" kind="show" id="kN3-zk-X1G"/>
+                        <segue destination="wm9-V7-3Ik" kind="show" identifier="swipeLeftSegue" id="kN3-zk-X1G"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

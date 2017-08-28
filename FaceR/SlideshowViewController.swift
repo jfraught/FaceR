@@ -46,6 +46,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
             if imageIndex == album.fullAlbum.count - 1 {
                 return
             } else if imageIndex < album.fullAlbum.count {
+                print("Swiped left")
                 imageIndex += 1
                 print(imageIndex)
                 updateViews(index: imageIndex)
@@ -122,7 +123,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
             }
         }
     }
-
+    
     // MARK: Helpers
     
     func videoFileLocation() -> String {
@@ -139,8 +140,18 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
         print("Finishedrecord: \(outputFileURL)")
+        
+        self.outputFileLocation = outputFileURL
+        self.performSegue(withIdentifier: "swipeLeftSegue", sender: nil)
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let preview = segue.destination as! EndOfSlideshowViewController
+        preview.fileLocation = self.outputFileLocation
+    }
     
     // MARK: - Properties
    
@@ -158,5 +169,5 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     let captureSession = AVCaptureSession()
     var videoCaptureDevice: AVCaptureDevice?
     var movieFileOutput = AVCaptureMovieFileOutput()
-    var outputFileURL: URL?
+    var outputFileLocation: URL?
 }
