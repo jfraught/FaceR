@@ -86,20 +86,20 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
         navigationItem.title = "Slide \(index + 1) of \(album.fullAlbum.count)"
     }
     
-    func action() {
+    @objc func action() {
         time += 1
         print("timer is at \(time)")
     }
     
     func initializeCamera() {
-        self.captureSession.sessionPreset = AVCaptureSessionPresetHigh
+        self.captureSession.sessionPreset = AVCaptureSession.Preset.high
         
-        let discovery = AVCaptureDeviceDiscoverySession.init(deviceTypes: [AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .unspecified) as AVCaptureDeviceDiscoverySession
+        let discovery = AVCaptureDevice.DiscoverySession.init(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified) as AVCaptureDevice.DiscoverySession
         
         for device in discovery.devices as [AVCaptureDevice] {
             
-            if device.hasMediaType(AVMediaTypeVideo) {
-                if device.position == AVCaptureDevicePosition.front {
+            if device.hasMediaType(AVMediaType.video) {
+                if device.position == AVCaptureDevice.Position.front {
                     self.videoCaptureDevice = device
                 }
             }
@@ -108,9 +108,9 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
         if videoCaptureDevice != nil {
             
             do {
-                try self.captureSession.addInput(AVCaptureDeviceInput(device: self.videoCaptureDevice))
+                try self.captureSession.addInput(AVCaptureDeviceInput(device: self.videoCaptureDevice!))
                     
-                if let audioInput = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio) {
+                if let audioInput = AVCaptureDevice.default(for: AVMediaType.audio) {
                     try self.captureSession.addInput(AVCaptureDeviceInput(device: audioInput))
                 }
                 
@@ -131,21 +131,22 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     }
     
     func startRecording() {
-        self.movieFileOutput.connection(withMediaType: AVMediaTypeVideo).videoOrientation = .portrait
+        self.movieFileOutput.connection(with: AVMediaType.video)?.videoOrientation = .portrait
         
-        self.movieFileOutput.startRecording(toOutputFileURL: URL(fileURLWithPath: self.videoFileLocation()), recordingDelegate: self)
+        self.movieFileOutput.startRecording(to: URL(fileURLWithPath: self.videoFileLocation()), recordingDelegate: self)
     }
     
     // MARK: - AVCaptureFileOutputDelegate
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         print("Finishedrecord: \(outputFileURL)")
         
         self.outputFileLocation = outputFileURL
         self.performSegue(withIdentifier: "swipeLeftSegue", sender: nil)
+        
     }
     
-    // MARK: - Navigation
+//     MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
