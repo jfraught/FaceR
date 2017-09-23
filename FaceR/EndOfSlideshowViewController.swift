@@ -39,13 +39,16 @@ class EndOfSlideshowViewController: UIViewController {
         let track = asset.tracks(withMediaType: AVMediaType.video)
         let videoTrack: AVAssetTrack = track[0] as AVAssetTrack
         let timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration)
+        print("This is potrait \(videoTrack.preferredTransform) for the videoTrack")
+        
         
         let compositionVideoTrack: AVMutableCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaType.video, preferredTrackID: CMPersistentTrackID())!
         
         do {
             try compositionVideoTrack.insertTimeRange(timeRange, of: videoTrack, at: kCMTimeZero)
-            
             compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
+            print("\(compositionVideoTrack.preferredTransform) compositionVideoTrack")
+            
         } catch {
             print(error)
         }
@@ -62,39 +65,75 @@ class EndOfSlideshowViewController: UIViewController {
             }
         }
         
+        // Image Layer
+        // I switched the naturalSize width and height because they were displaying in landscape. This way the video is portrait.
+        
         let size = videoTrack.naturalSize
         let image: UIImage = Album.shared.fullAlbum[0]
         let imageLayer = CALayer()
         imageLayer.contents = image.cgImage
         imageLayer.frame = CGRect(x: 10, y:10, width: 180, height: 180)
         
+        
+        // Video Layer
+        
         let videoLayer = CALayer()
+        videoLayer.frame = CGRect(x: 0, y: 0, width: size.height, height: size.width)
         
-        videoLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        
+        // Parent Layer
         
         let parentLayer = CALayer()
-        parentLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        parentLayer.frame = CGRect(x: 0, y: 0, width: size.height, height: size.width)
         parentLayer.addSublayer(videoLayer)
         parentLayer.addSublayer(imageLayer)
+        
         
         let layerComposition = AVMutableVideoComposition()
         layerComposition.frameDuration = CMTimeMake(1, 30)
         layerComposition.renderSize = size
         layerComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer)
         
+        
         let instruction = AVMutableVideoCompositionInstruction()
         instruction.timeRange = CMTimeRangeMake(kCMTimeZero, composition.duration)
+        
         let videotrack = composition.tracks(withMediaType: AVMediaType.video)[0] as AVAssetTrack
+        print("videotrack transform = \(videotrack.preferredTransform)")
         let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videotrack)
-        
-        // Transform
-        
-        let transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
-        layerInstruction.setTransform(transform, at: kCMTimeZero)
+        layerInstruction.setTransform(videoTrack.preferredTransform, at: kCMTimeZero)
+
         
         instruction.layerInstructions = [layerInstruction]
         layerComposition.instructions = [instruction]
+        
+        
+        //Setting the render size and frame duration
+        
+        let naturalSizeFirst: CGSize = CGSize(width: videoTrack.naturalSize.width, height: videoTrack.naturalSize.height)
+        let naturalSizeSecond: CGSize = CGSize(width: videotrack.naturalSize.width, height: videotrack.naturalSize.height)
+        var renderHeight: CGFloat = 0.0
+        var renderWidth: CGFloat = 0.0
+        
+        print("videoTrack.height = \(naturalSizeFirst.height)")
+        print("videoTrack.width = \(naturalSizeFirst.width)")
+        print("videotrack.height = \(naturalSizeSecond.height)")
+        print("videotrack.width = \(naturalSizeSecond.width)")
+        
+        
+        if naturalSizeFirst.height > naturalSizeSecond.height {
+            renderHeight = naturalSizeFirst.height
+                    } else {
+            renderHeight = naturalSizeSecond.height
+        }
+        
+        if naturalSizeFirst.width > naturalSizeSecond.width {
+            renderWidth = naturalSizeFirst.width
+        } else {
+            renderWidth = naturalSizeSecond.width
+        }
+        
+        layerComposition.renderSize = CGSize(width: renderHeight, height: renderWidth)
+        layerComposition.frameDuration = CMTime(seconds: 1.0, preferredTimescale: videotrack.naturalTimeScale)
         
         let filePath = NSTemporaryDirectory() + self.fileName()
         let movieUrl = URL(fileURLWithPath: filePath)
@@ -106,6 +145,7 @@ class EndOfSlideshowViewController: UIViewController {
         assetExport.exportAsynchronously(completionHandler: {
             switch assetExport.status {
             case .completed:
+                print (layerComposition)
                 print("success")
                 PhotoManager().saveVideoToUserLibrary(fileUrl: assetExport.outputURL!) { (success, error) in
                     if success {
