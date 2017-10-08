@@ -22,6 +22,11 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SlideshowViewController.action), userInfo: nil, repeats: true)
         nextViewSwipeGesture.isEnabled = false
         
+        if Settings.shared.isRecordingLabel == false {
+            isRecordingLabel.title = ""
+        } else {
+            isRecordingLabel.title = "Is Recording"
+        }
         // Initialize Camera
         
         self.initializeCamera()
@@ -142,6 +147,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     @IBOutlet var nextPhotoGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var SlideshowImageView: UIImageView!
     @IBOutlet var nextViewSwipeGesture: UISwipeGestureRecognizer!
+    @IBOutlet weak var isRecordingLabel: UIBarButtonItem!
     
     let minimumTime = Settings.shared.timerCount
     var imageIndex: Int = 0

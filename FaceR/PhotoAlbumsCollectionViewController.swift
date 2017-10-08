@@ -11,13 +11,13 @@ import Photos
 
 class PhotosAlbumsCollectionViewController: UICollectionViewController {
     
+    
     // MARK: - Life Cycle
-
+    override func viewWillAppear(_ animated: Bool) {
+        album.fetchFirstImage()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        album.fetchFirstImage()
-
-        print("There are \(album.firstImageArray.count) images in arrary")
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

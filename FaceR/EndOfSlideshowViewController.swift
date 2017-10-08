@@ -54,17 +54,17 @@ class EndOfSlideshowViewController: UIViewController {
         }
         
         // TODO: use switch to choose to add audio or not.
-        
+        if Settings.shared.soundOn == true {
         let compositionAudioTrack: AVMutableCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: CMPersistentTrackID())!
         
-        for audioTrack in asset.tracks(withMediaType: AVMediaType.audio) {
-            do {
-                try compositionAudioTrack.insertTimeRange(audioTrack.timeRange, of: audioTrack, at: kCMTimeZero)
-            } catch {
-                print(error)
+            for audioTrack in asset.tracks(withMediaType: AVMediaType.audio) {
+                do {
+                    try compositionAudioTrack.insertTimeRange(audioTrack.timeRange, of: audioTrack, at: kCMTimeZero)
+                } catch {
+                    print(error)
+                }
             }
         }
-        
         // Image Layer
         // I switched the naturalSize width and height because they were displaying in landscape. This way the video is portrait.
         

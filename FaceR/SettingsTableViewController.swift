@@ -17,13 +17,29 @@ class SettingsTableViewController: UITableViewController {
         stepperCountLabel.text = String(stepCount)
         Settings.shared.timerCount = stepCount
     }
-   
+    @IBAction func recordingLabelSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn == true {
+            Settings.shared.isRecordingLabel = true
+        } else {
+            Settings.shared.isRecordingLabel = false 
+        }
+    }
+    
+    @IBAction func soundSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn == true {
+            Settings.shared.soundOn = true
+        } else {
+            Settings.shared.soundOn = false
+        }
+        print(Settings.shared.soundOn)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         secondsStepper.value = Double(Settings.shared.timerCount)
         stepperCountLabel.text = "\(Settings.shared.timerCount)"
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,8 +49,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
-    }
+        return 3    }
     
     // MARK: - Properties
     @IBOutlet weak var secondsStepper: UIStepper!

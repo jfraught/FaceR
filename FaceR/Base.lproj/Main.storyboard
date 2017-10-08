@@ -143,8 +143,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4ez-1L-ZSM">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ez-1L-ZSM">
                                                     <rect key="frame" x="711" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="recordingLabelSwitchChanged:" destination="YZU-OW-bMs" eventType="valueChanged" id="wdY-fU-ecO"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -153,6 +156,34 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="4ez-1L-ZSM" secondAttribute="trailing" id="abA-hD-1Cb"/>
                                                 <constraint firstItem="4ez-1L-ZSM" firstAttribute="centerY" secondItem="zRJ-QR-NaQ" secondAttribute="centerY" id="fcR-9V-d7m"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w5e-JL-WsZ" secondAttribute="trailingMargin" id="snD-R3-Vet"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lbc-WX-GeL">
+                                        <rect key="frame" x="0.0" y="88" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lbc-WX-GeL" id="VfE-Op-lmN">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-Ox-Hws">
+                                                    <rect key="frame" x="711" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="soundSwitchChanged:" destination="YZU-OW-bMs" eventType="valueChanged" id="asL-2W-7Dg"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record With Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cz-1g-tu0">
+                                                    <rect key="frame" x="8" y="11" width="148" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5Cz-1g-tu0" firstAttribute="centerY" secondItem="7sH-Ox-Hws" secondAttribute="centerY" id="N2V-Xd-fN8"/>
+                                                <constraint firstItem="5Cz-1g-tu0" firstAttribute="leading" secondItem="VfE-Op-lmN" secondAttribute="leadingMargin" id="RhY-rQ-8Rf"/>
+                                                <constraint firstItem="5Cz-1g-tu0" firstAttribute="centerY" secondItem="VfE-Op-lmN" secondAttribute="centerY" id="ief-yO-1Ss"/>
+                                                <constraint firstItem="7sH-Ox-Hws" firstAttribute="trailing" secondItem="VfE-Op-lmN" secondAttribute="trailingMargin" id="kVb-Ev-Z0B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -171,7 +202,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8V-fV-4fi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1525" y="824"/>
+            <point key="canvasLocation" x="1525" y="823.828125"/>
         </scene>
         <!--Start Slideshow View Controller-->
         <scene sceneID="hmh-ke-r70">
@@ -270,9 +301,14 @@
                             <constraint firstItem="U1I-kf-k96" firstAttribute="top" secondItem="fbw-dr-5hm" secondAttribute="bottom" id="tTw-rj-iFc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="swx-63-CiZ"/>
+                    <navigationItem key="navigationItem" title="Title" id="H2l-oB-ueB">
+                        <barButtonItem key="rightBarButtonItem" title="Is Recording" id="NLF-xy-Qn5">
+                            <color key="tintColor" red="1" green="0.18933723669999999" blue="0.14785972659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="SlideshowImageView" destination="U1I-kf-k96" id="JPc-2n-4XX"/>
+                        <outlet property="isRecordingLabel" destination="NLF-xy-Qn5" id="B6u-Hx-Cgn"/>
                         <outlet property="nextPhotoGesture" destination="02s-pN-bW7" id="MMS-ac-YLI"/>
                         <outlet property="nextViewSwipeGesture" destination="Kms-v2-uxb" id="Aqw-gV-QI6"/>
                     </connections>
@@ -293,6 +329,7 @@
                         <segue destination="wm9-V7-3Ik" kind="show" identifier="swipeLeftSegue" animates="NO" id="kN3-zk-X1G"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <navigationItem title="Title" id="8La-XU-Kc7"/>
             </objects>
             <point key="canvasLocation" x="3090.625" y="107.8125"/>
         </scene>
