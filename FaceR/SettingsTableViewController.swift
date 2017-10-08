@@ -39,5 +39,5 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
     @IBOutlet weak var secondsStepper: UIStepper!
     @IBOutlet weak var stepperCountLabel: UILabel!
-    var stepCount: Int = 0
+    var stepCount: Int = 1
 }

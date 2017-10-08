@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -106,14 +105,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gr0-EI-5NX">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gr0-EI-5NX">
                                                     <rect key="frame" x="666" y="7" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="stepperWasTouched:" destination="YZU-OW-bMs" eventType="valueChanged" id="PpO-qz-hWO"/>
                                                     </connections>
                                                 </stepper>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8z-OW-W7Y">
-                                                    <rect key="frame" x="623" y="11" width="11" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8z-OW-W7Y">
+                                                    <rect key="frame" x="626" y="11" width="8" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -274,6 +273,7 @@
                     <navigationItem key="navigationItem" title="Title" id="swx-63-CiZ"/>
                     <connections>
                         <outlet property="SlideshowImageView" destination="U1I-kf-k96" id="JPc-2n-4XX"/>
+                        <outlet property="nextPhotoGesture" destination="02s-pN-bW7" id="MMS-ac-YLI"/>
                         <outlet property="nextViewSwipeGesture" destination="Kms-v2-uxb" id="Aqw-gV-QI6"/>
                     </connections>
                 </viewController>

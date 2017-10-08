@@ -41,19 +41,17 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     // MARK: - Swipe Gestures
     
     @IBAction func swipedLeft(_ sender: UISwipeGestureRecognizer) {
-        if time >= minimumTime {
-            print("Swiped left")
+        if time > minimumTime {
             if imageIndex == album.fullAlbum.count - 1 {
-                return
-            } else if imageIndex < album.fullAlbum.count {
+                album.timesArray.append(time)
+                performSegue(withIdentifier: "swipeLeftSegue", sender: UISwipeGestureRecognizer())
+            } else if imageIndex < album.fullAlbum.count && imageIndex != album.fullAlbum.count - 1 {
                 print("Swiped left")
                 imageIndex += 1
                 print(imageIndex)
+                album.timesArray.append(time)
                 updateViews(index: imageIndex)
                 time = 0
-                if imageIndex == album.fullAlbum.count - 1 {
-                    nextViewSwipeGesture.isEnabled = true
-                }
             }
         } else {
             return
@@ -61,22 +59,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
         
     }
     
-    @IBAction func swipedRight(_ sender: UISwipeGestureRecognizer) {
-        print("Swiped right")
-        if time >= minimumTime {
-            if imageIndex == 0 {
-                print(imageIndex)
-                return
-            } else if imageIndex > 0 {
-                print(imageIndex)
-                imageIndex -= 1
-                updateViews(index: imageIndex)
-                time = 0
-            }
-        } else {
-            return
-        }
-    }
+   
     
     // MARK: Main
     
@@ -156,6 +139,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     
     // MARK: - Properties
    
+    @IBOutlet var nextPhotoGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var SlideshowImageView: UIImageView!
     @IBOutlet var nextViewSwipeGesture: UISwipeGestureRecognizer!
     
@@ -171,4 +155,5 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     var videoCaptureDevice: AVCaptureDevice?
     var movieFileOutput = AVCaptureMovieFileOutput()
     var outputFileLocation: URL?
+    
 }

@@ -87,6 +87,21 @@ class Album {
         }
     }
     
+    func startTimesForSegments() {
+        for i in 0..<timesArray.count {
+            if i == 0 {
+                let startTime: Int = timesArray[i]
+                startTimes.append(startTime)
+                print("Start time for image \(i) is \(startTimes[i])")
+            } else {
+                let startTime: Int = startTimes[i-1] + timesArray[i]
+                startTimes.append(startTime)
+                print("Start time for image \(i) is \(startTimes[i])")
+            }
+            
+        }
+    }
+    
     // MARK: - Properties
     var index = 0 
     let requestOptions = PHImageRequestOptions()
@@ -98,5 +113,7 @@ class Album {
     var fullAlbum: [UIImage] = []
     let imgManager = PHImageManager.default()
     let fetchOptions = PHFetchOptions()
+    var timesArray: [Int] = []
+    var startTimes: [Int] = []
     
 }

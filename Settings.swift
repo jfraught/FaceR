@@ -12,5 +12,5 @@ class Settings {
 
     // MARK: - Properties
     static let shared = Settings()
-    var timerCount: Int = 0
+    var timerCount: Int = 1
 }
