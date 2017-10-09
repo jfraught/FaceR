@@ -17,7 +17,7 @@ class EndOfSlideshowViewController: UIViewController {
     @IBAction func exitButtonTapped(_ sender: Any) {
         print("FileLocation = nil : \(fileLocation == nil)")
         saveWithImages()
-        navigationController?.popToRootViewController(animated: true)
+        
         
         
     }
@@ -82,6 +82,7 @@ class EndOfSlideshowViewController: UIViewController {
         Album.shared.startTimesForSegments()
         
         for i in 0..<album.count {
+            print("Number of image should be \(i)")
             let image: UIImage = Album.shared.fullAlbum[i]
             let imageLayer = CALayer()
             if i == 0 {
@@ -92,7 +93,7 @@ class EndOfSlideshowViewController: UIViewController {
             
             imageLayer.duration = Double(Album.shared.timesArray[i])
             imageLayer.contents = image.cgImage
-            imageLayer.frame = CGRect(x: 10, y:10, width: 180, height: 180)
+            imageLayer.frame = CGRect(x: 10, y:10, width: 250, height: 250)
             parentLayer.addSublayer(imageLayer)
             
         }
@@ -152,6 +153,7 @@ class EndOfSlideshowViewController: UIViewController {
                 PhotoManager().saveVideoToUserLibrary(fileUrl: assetExport.outputURL!) { (success, error) in
                     if success {
                         print("File saved to photos")
+                        
                     } else {
                         print("File not saved to photos")
                     }
@@ -174,7 +176,7 @@ class EndOfSlideshowViewController: UIViewController {
                 break
             }
         })
-        
+        self.navigationController?.popToRootViewController(animated: true)
 
     }
     

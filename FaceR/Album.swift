@@ -25,7 +25,6 @@ class Album {
         self.userCollections = fetchedUserCollections
         requestOptions.isSynchronous = true
         requestOptions.deliveryMode = .highQualityFormat
-        print("collections with pictures \(newUserCollections.count)")
     }
     
     // MARK: - Actions
@@ -39,13 +38,9 @@ class Album {
             
             for i in 0..<newUserCollections.count {
                 hasLooped += 1
-                print("has looped \(hasLooped)")
-                print("userCollections count is \(userCollections.count)")
                 let album = newUserCollections[i]
                 
                 guard let firstImageAsset = PHAsset.fetchAssets(in: album, options: PHFetchOptions()).firstObject else { return }
-                
-                print("Has passed guard statement")
                 guard let albumName = album.localizedTitle else { return }
                 albumNameArrary.append(albumName)
                 
@@ -74,7 +69,7 @@ class Album {
         if albumAssets.count > 0 {
         for i in 0..<albumAssets.count {
             
-            imgManager.requestImage(for: albumAssets[i], targetSize: .init(width: 1000, height: 1000), contentMode: .default, options: requestOptions, resultHandler:
+            imgManager.requestImage(for: albumAssets[i], targetSize: .init(width: 1000, height: 1000), contentMode: .aspectFill, options: requestOptions, resultHandler:
                 {
                     image, error in
                     
@@ -83,7 +78,7 @@ class Album {
                     }
                 })
         }
-        print(fullAlbum.count)
+        print("This is the full album.count \(fullAlbum.count)")
         }
     }
     
@@ -92,11 +87,10 @@ class Album {
             if i == 0 {
                 let startTime: Int = timesArray[i]
                 startTimes.append(startTime)
-                print("Start time for image \(i) is \(startTimes[i])")
+                
             } else {
                 let startTime: Int = startTimes[i-1] + timesArray[i]
                 startTimes.append(startTime)
-                print("Start time for image \(i) is \(startTimes[i])")
             }
             
         }

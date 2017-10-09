@@ -16,6 +16,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        album.fetchFullAlbumWith(index: album.index)
         imageIndex = 0
         updateViews(index: imageIndex)
         self.SlideshowImageView?.isUserInteractionEnabled = true
@@ -53,7 +54,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
             } else if imageIndex < album.fullAlbum.count && imageIndex != album.fullAlbum.count - 1 {
                 print("Swiped left")
                 imageIndex += 1
-                print(imageIndex)
+                print("The image index is \(imageIndex)")
                 album.timesArray.append(time)
                 updateViews(index: imageIndex)
                 time = 0
@@ -69,7 +70,6 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
     // MARK: Main
     
     private func updateViews(index: Int) {
-        album.fetchFullAlbumWith(index: album.index)
         SlideshowImageView.image = album.fullAlbum[index]
         navigationItem.title = "Slide \(index + 1) of \(album.fullAlbum.count)"
     }
