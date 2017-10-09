@@ -57,6 +57,7 @@ class SlideshowViewController: UIViewController, AVCaptureFileOutputRecordingDel
                 print("The image index is \(imageIndex)")
                 album.timesArray.append(time)
                 updateViews(index: imageIndex)
+                print("The time interval is \(timer.fireDate)")
                 time = 0
             }
         } else {

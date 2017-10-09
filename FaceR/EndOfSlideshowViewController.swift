@@ -82,15 +82,17 @@ class EndOfSlideshowViewController: UIViewController {
         Album.shared.startTimesForSegments()
         
         for i in 0..<album.count {
-            print("Number of image should be \(i)")
+            
             let image: UIImage = Album.shared.fullAlbum[i]
             let imageLayer = CALayer()
             if i == 0 {
                 imageLayer.beginTime = Double(0)
+           
             } else {
-                imageLayer.beginTime = Double(Album.shared.startTimes[i - 1])
+                imageLayer.beginTime = Double(Album.shared.startTimes[i])
             }
             
+            print("Start time for image \(i) is \(Album.shared.startTimes[i])")
             imageLayer.duration = Double(Album.shared.timesArray[i])
             imageLayer.contents = image.cgImage
             imageLayer.frame = CGRect(x: 10, y:10, width: 250, height: 250)

@@ -85,11 +85,8 @@ class Album {
     func startTimesForSegments() {
         for i in 0..<timesArray.count {
             if i == 0 {
-                let startTime: Int = timesArray[i]
-                startTimes.append(startTime)
-                
             } else {
-                let startTime: Int = startTimes[i-1] + timesArray[i]
+                let startTime: Int = startTimes[i-1] + timesArray[i-1]
                 startTimes.append(startTime)
             }
             
@@ -108,6 +105,6 @@ class Album {
     let imgManager = PHImageManager.default()
     let fetchOptions = PHFetchOptions()
     var timesArray: [Int] = []
-    var startTimes: [Int] = []
+    var startTimes: [Int] = [0]
     
 }
